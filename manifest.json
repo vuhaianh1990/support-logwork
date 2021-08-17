@@ -1,0 +1,42 @@
+{
+  "name": "Support Logwork",
+  "version": "1.0",
+  "description": "Công cụ hỗ trợ logwork Jira",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Support Logwork",
+    "default_icon": {
+      "16": "img/logs16.png",
+      "24": "img/logs24.png",
+      "32": "img/logs32.png",
+      "128": "img/logs128.png"
+    }
+  },
+  "icons": {
+    "16": "img/logs16.png",
+    "24": "img/logs24.png",
+    "32": "img/logs32.png",
+    "128": "img/logs128.png"
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://insight.fsoft.com.vn/*"],
+      "all_frames": true,
+      "css": ["css/bootstrap.min.css", "css/custom.css"],
+      "js": ["js/jquery.min.js", "js/bootstrap.min.js", "js/content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://insight.fsoft.com.vn/;"
+  },
+  "web_accessible_resources": [{
+    "resources": ["img/logs32.png"],
+    "matches": ["https://insight.fsoft.com.vn/*"]
+  }]
+}
